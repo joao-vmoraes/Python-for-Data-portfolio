@@ -7,7 +7,6 @@ cursor = conn.cursor()
 
 cursor.execute(
     'SELECT * FROM customers '
-    'WHERE id = "1" '
 )
 
 for row in cursor.fetchall():
