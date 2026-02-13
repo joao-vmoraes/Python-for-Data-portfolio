@@ -22,4 +22,13 @@ with conn:
             'PRIMARY KEY (id) '
             ') '
         )
-        conn.commit()
+    conn.commit()
+
+    with conn.cursor() as cursor:
+        result = cursor.execute(
+            'INSERT INTO customers (nome, idade) '
+            'VALUES '
+            '("Liz", 25) '
+        )
+    print(result)
+    conn.commit()
