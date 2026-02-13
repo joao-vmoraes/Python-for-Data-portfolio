@@ -32,3 +32,16 @@ with conn:
         result = cursor.execute(sql, ('Carla', 30))
     print(result)
     conn.commit()
+
+    with conn.cursor() as cursor:
+        sql = ('INSERT INTO customers (nome, idade) '
+            'VALUES '
+            '(%(name)s, %(age)s) ' 
+            )
+        data = (
+            {"name" : "Pedro" , "age": 30}, 
+            {"name" : "Juan" , "age": 36}, 
+            {"name" : "Mariana" , "age": 12},
+        )
+        cursor.executemany(sql, data) 
+    conn.commit()
