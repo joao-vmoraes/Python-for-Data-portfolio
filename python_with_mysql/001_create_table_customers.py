@@ -1,5 +1,6 @@
 import os
 import pymysql
+import pymysql.cursors
 import dotenv
 
 dotenv.load_dotenv('..')
@@ -9,6 +10,7 @@ conn = pymysql.connect(
     user= os.environ['MYSQL_USER'],
     password= os.environ['MYSQL_PASSWORD'],
     database= os.environ['MYSQL_DATABASE'],
+    cursorclass=pymysql.cursors.DictCursor
 )
 cursor = conn.cursor()
 
@@ -21,6 +23,12 @@ with conn:
             'idade INT NOT NULL, '
             'PRIMARY KEY (id) '
             ') '
+        )
+    conn.commit()
+
+    with conn.cursor() as cursor:
+        cursor.execute(
+            'TRUNCATE TABLE customers'
         )
     conn.commit()
 
@@ -45,3 +53,22 @@ with conn:
         )
         cursor.executemany(sql, data) 
     conn.commit()
+
+    
+    with conn.cursor() as cursor:
+        sql = (
+            'DELETE FROM customers ' \
+            'WHERE id = 4 '
+        )
+        cursor.execute(sql)
+        conn.commit()
+    
+    with conn.cursor() as cursor:
+        sql = (
+            'SELECT * FROM customers ' \
+            'WHERE id > 0'
+        )
+        cursor.execute(sql)
+        
+        for row in cursor.fetchall():
+            print(row)
