@@ -25,10 +25,10 @@ with conn:
     conn.commit()
 
     with conn.cursor() as cursor:
-        result = cursor.execute(
-            'INSERT INTO customers (nome, idade) '
+        sql = ('INSERT INTO customers (nome, idade) '
             'VALUES '
-            '("Liz", 25) '
-        )
+            '(%s, %s) ' 
+            )
+        result = cursor.execute(sql, ('Carla', 30))
     print(result)
     conn.commit()
