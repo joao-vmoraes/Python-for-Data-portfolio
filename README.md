@@ -46,6 +46,7 @@ Para subir todo o ambiente (Banco + Python), utilize o comando abaixo na raiz do
 
 ```bash
 docker-compose up --build
+pip install -r requirements.txt
 ```
 > Necessário ter o Docker baixado para acessar banco.
 
@@ -58,7 +59,12 @@ Se por acaso der algum erro, provavelmente a porta 3306 do seu computador esta e
       ...
 ```
 
-depois nos arquivos `.py` que estejam usando a biblioteca `MySQL`
+depois renomei o arquivo `.env-example` para `.env` e mude as informaçoes da sua preferencia.
 ```python
-port=3306  --->>  port=3307
+MYSQL_ROOT_PASSWORD='CHANGE-ME' -> 123456
+MYSQL_DATABASE='CHANGE-ME' -> bancodedados
+MYSQL_USER='CHANGE-ME' -> usuario
+MYSQL_PASSWORD='CHANGE-ME' -> 123
+MYSQL_HOST='localhost' 
 ```
+
