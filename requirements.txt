@@ -4,4 +4,4 @@ numpy
 pymysql
 types-pymysql
 python-dotenv
-os
+cryptography
