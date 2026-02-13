@@ -1,3 +1,7 @@
 mysql-connector-python
 pandas
 numpy
+pymysql
+types-pymysql
+python-dotenv
+os

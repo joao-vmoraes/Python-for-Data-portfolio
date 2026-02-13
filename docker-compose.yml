@@ -2,18 +2,15 @@ version: '3.9'
 
 services:
   mysql:
+    env_file:
+      - .env
     image: mysql:8.0
     container_name: mysql_data
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: dados_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: 1234
     ports:
       - "3306:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - ./mysql_data:/var/lib/mysql
 
   python:
     build: .
