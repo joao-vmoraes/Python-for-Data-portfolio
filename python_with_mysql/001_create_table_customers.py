@@ -4,7 +4,7 @@ import pymysql.cursors
 import dotenv
 import time
 
-time.sleep(30)
+
 
 dotenv.load_dotenv()
 
@@ -74,6 +74,14 @@ with conn:
         )
         cursor.execute(sql)
         conn.commit()
+
+    with conn.cursor() as cursor:
+        sql = (
+            'UPDATE customers '
+            'SET nome = "Henrico" '
+            'WHERE id = 2 '
+        )
+        cursor.execute(sql)
     
     with conn.cursor() as cursor:
         sql = (
