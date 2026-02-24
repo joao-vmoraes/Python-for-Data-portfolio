@@ -5,3 +5,4 @@ pymysql
 types-pymysql
 python-dotenv
 cryptography
+openpyxl
