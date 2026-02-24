@@ -19,7 +19,7 @@ services:
       - mysql
     volumes:
       - .:/app
-    command: python python/test_mysql.py
+    command: python python_with_mysql/001_create_table_customers.py
 
 volumes:
   mysql_data:

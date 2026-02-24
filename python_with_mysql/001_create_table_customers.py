@@ -2,16 +2,26 @@ import os
 import pymysql
 import pymysql.cursors
 import dotenv
+import time
 
-dotenv.load_dotenv('..')
 
-conn = pymysql.connect(
-    host= os.environ['MYSQL_HOST'],
-    user= os.environ['MYSQL_USER'],
-    password= os.environ['MYSQL_PASSWORD'],
-    database= os.environ['MYSQL_DATABASE'],
-    cursorclass=pymysql.cursors.DictCursor
-)
+
+dotenv.load_dotenv()
+
+while True:
+    try:
+        conn = pymysql.connect(
+            host=os.getenv("MYSQL_HOST"),
+            user=os.getenv("MYSQL_USER"),
+            password=os.getenv("MYSQL_PASSWORD"), #type: ignore
+            database=os.getenv("MYSQL_DATABASE")
+        ) #type: ignore
+        print("Conectado ao MySQL!")
+        break
+    except:
+        print("Aguardando MySQL iniciar...")
+        time.sleep(10)
+
 cursor = conn.cursor()
 
 with conn:
@@ -50,6 +60,8 @@ with conn:
             {"name" : "Pedro" , "age": 30}, 
             {"name" : "Juan" , "age": 36}, 
             {"name" : "Mariana" , "age": 12},
+            {"name" : "Juazeiro" , "age": 12},
+            {"name" : "Pedrinho" , "age": 30}, 
         )
         cursor.executemany(sql, data) 
     conn.commit()
@@ -62,6 +74,14 @@ with conn:
         )
         cursor.execute(sql)
         conn.commit()
+
+    with conn.cursor() as cursor:
+        sql = (
+            'UPDATE customers '
+            'SET nome = "Henrico" '
+            'WHERE id = 2 '
+        )
+        cursor.execute(sql)
     
     with conn.cursor() as cursor:
         sql = (

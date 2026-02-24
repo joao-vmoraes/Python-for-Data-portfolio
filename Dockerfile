@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["python", "python/test_mysql.py"]
+CMD ["python", "python_with_mysql/001_create_table_customers.py"]
