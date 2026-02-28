@@ -10,7 +10,7 @@ Este repositório documenta minha transição de scripts SQL puros para um ecoss
 
 * **Linguagem:** Python 3.13
 * **Banco de Dados:** MySQL 
-* **Bibliotecas:** SQLite3 e MySQL Connector, Futuramente: (Pandas, Numpy)
+* **Bibliotecas:** SQLite3 e PyMySQL, Pandas, Futuramente: Numpy
 * **Infraestrutura:** Docker e Git
 
 ---
@@ -64,5 +64,6 @@ MYSQL_USER='CHANGE-ME' -> usuario
 MYSQL_PASSWORD='CHANGE-ME' -> 123
 MYSQL_HOST='localhost' 
 ```
+
 
 
