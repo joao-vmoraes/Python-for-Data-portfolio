@@ -19,10 +19,7 @@ Este repositório documenta minha transição de scripts SQL puros para um ecoss
 
 O projeto é totalmente conteinerizado para garantir a reprodutibilidade do ambiente:
 
-### 1. Dockerfile
-Define a imagem Python, instalando as dependências listadas em `requirements.txt` e configurando o diretório de trabalho em `/app`.
-
-### 2. Docker Compose
+### 1. Docker Compose
 dois serviços principais:
 * **mysql**: Container de banco de dados com persistência via volumes locais.
 * **python**: Container de aplicação que depende do banco para execução, permitindo o desenvolvimento em tempo real através do espelhamento de pastas.
@@ -36,7 +33,7 @@ dois serviços principais:
 | `python/` | Scripts de processamento e testes de conexão. |
 | `docker-compose.yml` | Configuração da rede e serviços dos containers. |
 | `requirements.txt` | Bibliotecas necessárias (Pandas, Numpy, SQLite). |
-| `Dockerfile` | Receita para construção da imagem Python. |
+| `Dockerfile` | construção da imagem Python. |
 
 ---
 
@@ -67,4 +64,5 @@ MYSQL_USER='CHANGE-ME' -> usuario
 MYSQL_PASSWORD='CHANGE-ME' -> 123
 MYSQL_HOST='localhost' 
 ```
+
 
